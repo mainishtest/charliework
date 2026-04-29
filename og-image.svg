@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1828"/>
+      <stop offset="60%" stop-color="#122844"/>
+      <stop offset="100%" stop-color="#0f2a42"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="65%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c8a45a" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#c8a45a" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#c8a45a" stroke-width="0.5" stroke-opacity="0.08"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Left gold accent bar -->
+  <rect x="0" y="0" width="5" height="630" fill="#c8a45a"/>
+
+  <!-- Top-left: eyebrow label -->
+  <text x="72" y="88" font-family="Georgia, serif" font-size="13" font-weight="400"
+        letter-spacing="4" fill="#c8a45a" text-anchor="start">CHARLIE WORK, INC.</text>
+
+  <!-- Divider under eyebrow -->
+  <rect x="72" y="102" width="48" height="1.5" fill="#c8a45a" opacity="0.6"/>
+
+  <!-- Main headline -->
+  <text x="72" y="198" font-family="Georgia, 'Times New Roman', serif" font-size="74"
+        font-weight="300" font-style="italic" fill="#ffffff" text-anchor="start">Helping You</text>
+  <text x="72" y="286" font-family="Georgia, 'Times New Roman', serif" font-size="74"
+        font-weight="300" font-style="italic" fill="#c8a45a" text-anchor="start">Design Success</text>
+
+  <!-- Body copy -->
+  <text x="72" y="352" font-family="Arial, Helvetica, sans-serif" font-size="19"
+        font-weight="300" fill="#8a9ab0" text-anchor="start">Comprehensive consulting · Gap analysis · Project planning · Cost analysis</text>
+
+  <!-- Bottom rule + URL -->
+  <rect x="72" y="530" width="1056" height="1" fill="#c8a45a" opacity="0.2"/>
+  <text x="72" y="566" font-family="Arial, Helvetica, sans-serif" font-size="14"
+        font-weight="400" letter-spacing="2" fill="#8a9ab0" text-anchor="start">charlie-work.com</text>
+
+  <!-- Monogram circle group — right side -->
+  <!-- Outer ring -->
+  <circle cx="960" cy="315" r="190" fill="none" stroke="#c8a45a" stroke-width="1" stroke-opacity="0.18"/>
+  <!-- Middle ring dashed -->
+  <circle cx="960" cy="315" r="148" fill="none" stroke="#c8a45a" stroke-width="1"
+          stroke-opacity="0.12" stroke-dasharray="6 6"/>
+  <!-- Inner ring -->
+  <circle cx="960" cy="315" r="106" fill="none" stroke="#c8a45a" stroke-width="1" stroke-opacity="0.28"/>
+  <!-- Dot on outer ring (top) -->
+  <circle cx="960" cy="125" r="5" fill="#c8a45a"/>
+  <!-- Gold filled circle -->
+  <circle cx="960" cy="315" r="72" fill="#c8a45a"/>
+  <!-- Monogram letter C -->
+  <text x="960" y="348" font-family="Georgia, 'Times New Roman', serif" font-size="72"
+        font-weight="600" fill="#0d1f35" text-anchor="middle">C</text>
+</svg>
