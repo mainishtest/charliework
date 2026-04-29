@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charlie Work, Inc. — Helping You Design Success</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0d1f35;
+      --navy-mid:#122844;
+      --navy-lt: #1a3454;
+      --gold:    #c8a45a;
+      --gold-lt: #e2c07e;
+      --cream:   #f6f0e6;
+      --cream-dk:#ede4d3;
+      --white:   #ffffff;
+      --text:    #d6cfc4;
+      --text-dk: #8a9ab0;
+      --serif:   'Cormorant Garamond', Georgia, serif;
+      --sans:    'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 70px;
+      background: rgba(13, 31, 53, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(200, 164, 90, 0.15);
+      transition: background 0.3s;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-size: 0.75rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.1em !important;
+      text-transform: uppercase !important;
+      color: var(--navy) !important;
+      background: var(--gold);
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-lt) !important; color: var(--navy) !important; }
+
+    /* ── HERO ────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0a1828 0%, var(--navy-mid) 60%, #0f2a42 100%);
+      padding: 120px 5vw 80px;
+    }
+
+    .hero-bg-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(200,164,90,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,164,90,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-bg-radial {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 60% 50%, rgba(200,164,90,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px; width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 6rem;
+      align-items: center;
+      position: relative; z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.7s 0.2s ease forwards;
+    }
+
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 5.5vw, 5.2rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: fadeUp 0.8s 0.38s ease forwards;
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.0rem;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.75;
+      max-width: 480px;
+      margin-bottom: 2.4rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.8s 0.54s ease forwards;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1rem; align-items: center;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.8s 0.68s ease forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--gold-lt); }
+
+    .btn-ghost {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(200,164,90,0.45);
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+    /* Monogram / visual */
+    .hero-monogram {
+      width: 100%; aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 1.2s 0.6s ease forwards;
+    }
+
+    .mono-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(200,164,90,0.2);
+    }
+
+    .mono-ring-1 { width: 90%; height: 90%; animation: spin 28s linear infinite; }
+    .mono-ring-2 { width: 70%; height: 70%; animation: spin 20s linear infinite reverse; border-style: dashed; border-color: rgba(200,164,90,0.12); }
+    .mono-ring-3 { width: 50%; height: 50%; animation: spin 14s linear infinite; border-color: rgba(200,164,90,0.25); }
+
+    .mono-ring-1::after {
+      content: '';
+      position: absolute; top: -3px; left: 50%;
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      transform: translateX(-50%);
+    }
+
+    .mono-inner {
+      position: relative; z-index: 2;
+      width: 110px; height: 110px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 60px rgba(200,164,90,0.25);
+    }
+
+    .mono-letter {
+      font-family: var(--serif);
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1;
+      margin-top: -4px;
+    }
+
+    /* ── SERVICES ────────────────────────────────────── */
+    #services {
+      padding: 110px 5vw;
+      background: var(--navy);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .section-intro {
+      font-size: 0.98rem;
+      color: var(--text);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 4rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5px;
+      max-width: 1100px;
+      margin: 0 auto;
+      background: rgba(200,164,90,0.1);
+      border: 1px solid rgba(200,164,90,0.1);
+    }
+
+    .service-card {
+      background: var(--navy-mid);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .service-card:hover { background: var(--navy-lt); }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width 0.4s ease;
+    }
+
+    .service-card:hover::after { width: 100%; }
+
+    .service-icon {
+      width: 44px; height: 44px;
+      margin-bottom: 1.5rem;
+      color: var(--gold);
+    }
+
+    .service-name {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ── PROCESS ─────────────────────────────────────── */
+    #process {
+      padding: 110px 5vw;
+      background: #091627;
+    }
+
+    .process-header { max-width: 1100px; margin: 0 auto 5rem; }
+
+    .process-steps {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .process-step {
+      position: relative;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(200,164,90,0.2);
+    }
+
+    .step-num {
+      font-family: var(--serif);
+      font-size: 5.5rem;
+      font-weight: 600;
+      line-height: 1;
+      color: rgba(200,164,90,0.08);
+      position: absolute;
+      top: -1.2rem;
+      right: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .step-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .step-title {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+      line-height: 1.25;
+    }
+
+    .step-desc {
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ── ABOUT ───────────────────────────────────────── */
+    #about {
+      padding: 110px 5vw;
+      background: var(--navy);
+    }
+
+    .about-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+      height: 420px;
+    }
+
+    .about-card-back {
+      position: absolute;
+      top: 30px; left: 30px;
+      width: calc(100% - 30px);
+      height: calc(100% - 30px);
+      background: var(--navy-lt);
+      border: 1px solid rgba(200,164,90,0.15);
+    }
+
+    .about-card-front {
+      position: absolute;
+      top: 0; left: 0;
+      width: calc(100% - 30px);
+      height: calc(100% - 30px);
+      background: var(--navy-mid);
+      border: 1px solid rgba(200,164,90,0.2);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 2.5rem;
+    }
+
+    .about-accent {
+      position: absolute;
+      top: -20px; right: -20px;
+      width: 80px; height: 80px;
+      background: var(--gold);
+    }
+
+    .about-card-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .about-card-name {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.15;
+    }
+
+    .about-card-tagline {
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text);
+      margin-top: 0.4rem;
+    }
+
+    .about-content .section-label { margin-bottom: 0.75rem; }
+
+    .about-body {
+      font-size: 0.97rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1.4rem;
+    }
+
+    .about-body + .about-body { margin-top: 0; }
+
+    .about-divider {
+      width: 48px; height: 2px;
+      background: var(--gold);
+      margin: 2rem 0;
+    }
+
+    .about-stats {
+      display: flex; gap: 3rem;
+    }
+
+    .stat-val {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--text-dk);
+      text-transform: uppercase;
+    }
+
+    /* ── QUOTE BAND ──────────────────────────────────── */
+    #quote {
+      padding: 90px 5vw;
+      background: var(--cream);
+    }
+
+    .quote-inner {
+      max-width: 900px; margin: 0 auto;
+      text-align: center;
+    }
+
+    .quote-mark {
+      font-family: var(--serif);
+      font-size: 6rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 0.6;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .quote-text {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.45;
+      margin-bottom: 1.5rem;
+    }
+
+    .quote-attr {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── CTA / FOOTER ────────────────────────────────── */
+    #contact {
+      padding: 110px 5vw 80px;
+      background: #091627;
+    }
+
+    .contact-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-text .section-title { margin-bottom: 1.2rem; }
+
+    .contact-body {
+      font-size: 0.97rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-links {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.92rem;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover { color: var(--gold); }
+
+    .contact-link-icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+      border: 1px solid rgba(200,164,90,0.25);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+    }
+
+    .contact-form {
+      display: flex; flex-direction: column; gap: 1.2rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-field {
+      display: flex; flex-direction: column; gap: 0.4rem;
+    }
+
+    .form-field label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dk);
+    }
+
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,164,90,0.2);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      padding: 0.75rem 1rem;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus {
+      border-color: var(--gold);
+    }
+
+    .form-field textarea { resize: vertical; min-height: 110px; }
+
+    .form-field select option { background: var(--navy-mid); }
+
+    .form-submit {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      border: none;
+      padding: 0.95rem 2.2rem;
+      border-radius: 2px;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--gold-lt); }
+
+    /* ── FOOTER BAR ──────────────────────────────────── */
+    footer {
+      padding: 2rem 5vw;
+      background: #060f1a;
+      border-top: 1px solid rgba(200,164,90,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-dk);
+    }
+
+    /* ── ANIMATIONS ──────────────────────────────────── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-monogram { width: 260px; height: 260px; margin: 0 auto; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-visual { height: 320px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 560px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .about-stats { gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">Charlie Work, Inc.</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Schedule a Consult</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-bg-radial"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Charlie Work, Inc.</p>
+        <h1 class="hero-headline">
+          Helping You<br><em>Design Success</em>
+        </h1>
+        <p class="hero-sub">
+          Comprehensive consulting services that bring clarity, structure, and momentum to your most important initiatives — from gap analysis to final delivery.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Schedule a Consult</a>
+          <a href="#services" class="btn-ghost">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-monogram" aria-hidden="true">
+        <div class="mono-ring mono-ring-1"></div>
+        <div class="mono-ring mono-ring-2"></div>
+        <div class="mono-ring mono-ring-3"></div>
+        <div class="mono-inner">
+          <span class="mono-letter">C</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div style="max-width:1100px;margin:0 auto 3.5rem">
+      <p class="section-label">What We Deliver</p>
+      <h2 class="section-title">Consulting <em>built around</em><br>your real challenges</h2>
+      <p class="section-intro">
+        Every engagement is tailored. We partner with you to understand the full picture, then deliver the tools and analysis you need to move forward with confidence.
+      </p>
+    </div>
+    <div class="services-grid" style="max-width:1100px;margin:0 auto">
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M14 22h16M22 14v16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="22" cy="22" r="4" fill="currentColor" opacity="0.25"/>
+        </svg>
+        <h3 class="service-name">Comprehensive Consulting</h3>
+        <p class="service-desc">
+          End-to-end strategic consulting that covers the full breadth of your challenge. We assess your current state, align stakeholders, and chart a clear path forward — translating complexity into actionable guidance.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="8" width="32" height="28" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M12 18h20M12 24h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M30 28l3 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="30" cy="26" r="3" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <h3 class="service-name">Gap Analysis &amp; Reporting</h3>
+        <p class="service-desc">
+          Rigorous analysis that identifies the delta between where you are and where you need to be. Delivered as a clear, executive-ready report with prioritized recommendations and supporting data.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 36V16l10-8 10 8v20H8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M24 16h12v20H24" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <rect x="15" y="24" width="6" height="12" fill="currentColor" opacity="0.2" rx="1"/>
+          <path d="M28 22h4M28 27h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3 class="service-name">Project Planning &amp; Scheduling</h3>
+        <p class="service-desc">
+          Structured project plans and realistic schedules that keep initiatives on track. We define scope, sequence dependencies, set milestones, and give your team a shared framework to execute against.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 6v6M22 32v6M6 22h6M32 22h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="22" cy="22" r="10" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M18 22l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3 class="service-name">Cost Analysis</h3>
+        <p class="service-desc">
+          Detailed cost modeling and financial analysis that surfaces trade-offs and supports confident decision-making. We provide the numbers your leadership team needs to invest wisely and avoid costly surprises.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="process-header">
+      <p class="section-label">How We Work</p>
+      <h2 class="section-title">A structured engagement,<br><em>start to finish</em></h2>
+    </div>
+    <div class="process-steps">
+
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <p class="step-tag">Discovery</p>
+        <h3 class="step-title">Understand the Landscape</h3>
+        <p class="step-desc">We begin by listening. Through structured interviews and document review, we build a complete picture of your current state, goals, and constraints.</p>
+      </div>
+
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <p class="step-tag">Analysis</p>
+        <h3 class="step-title">Identify the Gaps</h3>
+        <p class="step-desc">We compare your current state against target outcomes, quantify variances, and isolate the highest-leverage opportunities for improvement.</p>
+      </div>
+
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <p class="step-tag">Planning</p>
+        <h3 class="step-title">Build the Roadmap</h3>
+        <p class="step-desc">We translate findings into a concrete project plan — with sequenced activities, resource estimates, cost modeling, and a realistic schedule.</p>
+      </div>
+
+      <div class="process-step">
+        <span class="step-num">04</span>
+        <p class="step-tag">Delivery</p>
+        <h3 class="step-title">Execute &amp; Advise</h3>
+        <p class="step-desc">We stay engaged through execution, providing ongoing advisory support and clear reporting so your team stays aligned and your initiative stays on track.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-inner">
+
+      <div class="about-visual" aria-hidden="true">
+        <div class="about-card-back"></div>
+        <div class="about-card-front">
+          <div class="about-accent"></div>
+          <p class="about-card-label">Principal Consultant</p>
+          <p class="about-card-name">Charlie Work, Inc.</p>
+          <p class="about-card-tagline">Helping you design success</p>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <p class="section-label">About</p>
+        <h2 class="section-title" style="margin-bottom:1.5rem">Built on <em>results,</em><br>not just recommendations</h2>
+
+        <p class="about-body">
+          Charlie Work, Inc. is a boutique consulting practice dedicated to helping organizations close the gap between where they are and where they need to be. Our approach is hands-on, rigorous, and always oriented toward practical outcomes.
+        </p>
+        <p class="about-body">
+          We work with clients across industries to deliver the analysis, planning, and execution support that turns strategic ambition into realized results — on time and within budget.
+        </p>
+
+        <div class="about-divider"></div>
+
+        <div class="about-stats">
+          <div>
+            <p class="stat-val">100%</p>
+            <p class="stat-label">Client Focus</p>
+          </div>
+          <div>
+            <p class="stat-val">4</p>
+            <p class="stat-label">Core Deliverables</p>
+          </div>
+          <div>
+            <p class="stat-val">1</p>
+            <p class="stat-label">Goal: Your Success</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUOTE BAND -->
+  <section id="quote">
+    <div class="quote-inner">
+      <span class="quote-mark">&ldquo;</span>
+      <p class="quote-text">
+        Comprehensive consulting, rigorous analysis, and structured planning — delivered with the clarity your team needs to move forward.
+      </p>
+      <p class="quote-attr">Charlie Work, Inc. &mdash; Helping You Design Success</p>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section id="contact">
+    <div class="contact-inner">
+
+      <div class="contact-text">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title">Ready to <em>design</em><br>your success?</h2>
+        <p class="contact-body">
+          Let's start with a conversation. Reach out to schedule an initial consultation — we'll discuss your situation, explore how we can help, and outline what an engagement might look like.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:info@charlie-work.com" class="contact-link">
+            <span class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M1 4.5l7 5 7-5" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+            </span>
+            info@charlie-work.com
+          </a>
+          <a href="http://charlie-work.com" class="contact-link">
+            <span class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M8 1C8 1 5 4 5 8s3 7 3 7M8 1c0 0 3 3 3 7s-3 7-3 7M1 8h14" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+            </span>
+            charlie-work.com
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fname">First Name</label>
+            <input id="fname" type="text" placeholder="Jane" required>
+          </div>
+          <div class="form-field">
+            <label for="lname">Last Name</label>
+            <input id="lname" type="text" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="jane@company.com" required>
+        </div>
+        <div class="form-field">
+          <label for="service">Area of Interest</label>
+          <select id="service">
+            <option value="">Select a service…</option>
+            <option>Comprehensive Consulting</option>
+            <option>Gap Analysis &amp; Reporting</option>
+            <option>Project Planning &amp; Scheduling</option>
+            <option>Cost Analysis</option>
+            <option>Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">Tell Us About Your Situation</label>
+          <textarea id="message" placeholder="Brief overview of your project or challenge…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Charlie Work, Inc.</span>
+    <span class="footer-copy">&copy; 2024 Charlie Work, Inc. All rights reserved.</span>
+  </footer>
+
+  <script>
+    // Sticky nav shadow on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.background = window.scrollY > 60
+        ? 'rgba(9, 22, 39, 0.97)'
+        : 'rgba(13, 31, 53, 0.85)';
+    });
+
+    // Intersection Observer for fade-up on service cards / process steps
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.service-card, .process-step, .about-inner > *, .contact-inner > *').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = `opacity 0.65s ${i * 0.1}s ease, transform 0.65s ${i * 0.1}s ease`;
+      observer.observe(el);
+    });
+
+    // Contact form handler
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = 'Message Sent';
+      btn.style.background = '#4a7c59';
+      btn.style.color = '#fff';
+      btn.disabled = true;
+    }
+  </script>
+
+</body>
+</html>
